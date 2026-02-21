@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calan - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<style>
+    .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23FFDA1A' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+</style>
+<body>
+    <nav class="navbar sticky-top navbar-expand-lg px-4"
+     style="background-color:#000000;">
+
+    <div class="container-fluid">
+
+        <!-- ブランド -->
+        <a class="navbar-brand fw-bold fs-4"
+           href="index.html"
+           style="color:#FFDA1A;">
+            Calan
+        </a>
+
+        <!-- ハンバーガー -->
+        <button class="navbar-toggler border-0"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- メニュー -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link fw-bold"
+                       style="color:#FFDA1A;"
+                       href="index.html">
+                       HOME
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       style="color: #96c7ff;"
+                       href="market.html">
+                       MARKET
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       style="color: #96c7ff;"
+                       href="about.html">
+                       ABOUT
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <br>
+    <div class="container overflow-hidden text-center">
+        <div class="row gx-5">
+          <div class="col-12 col-md-4">
+            <br>
+            <div class="p-3 h1">KeertkMoneng!</div>
+            <p><small class="text-body-secondary">おはようございます！</small></p>
+            <br>
+          </div>
+          <div class="col-12 col-md-8">
+            <div class="p-3 h4">
+              Calanは、ブリカスト産の商品をいち早くお届けするECサイトです。
+            </div>
+            <p>
+              <small class="text-body-secondary">
+                Calana' vikastuesaf oortdia fajagis tulsis xes "EC sait" xes.
+              </small>
+            </p>
+            <hr>
+            <a href="market.html" type="button" class="btn btn-outline-primary">
+              <i class="bi bi-cart"></i> いますぐショッピング
+            </a>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="container overflow-hidden text-center" id="authArea">
+      </div>
+      <br>
+        <div class="container mt-4 text-center">
+            <h4>マーケット</h4>
+            <div class="row text-center" id="cardContainer"></div>
+        </div>
+      <script>
+        const authArea = document.getElementById("authArea");
+        const user = JSON.parse(localStorage.getItem("calanUser"));
+        
+        if (user) {
+            authArea.innerHTML = `
+                <h3 class="mb-3">
+                    ${user.name} さん、ようこそ！
+                </h3>
+                <p>今日はどんなお買い物をしますか？</p>
+                <br>
+                <a type="button" class="btn btn-outline-danger" href="#" id="logoutBtn">
+                    ログアウト
+                </a>
+            `;
+        
+            document.getElementById("logoutBtn").addEventListener("click", () => {
+                localStorage.removeItem("calanUser");
+                location.reload();
+            });
+        
+        } else {
+            authArea.innerHTML = `
+            <div class="mb-3 h3">
+                Calanにログインする
+            </div>
+              <p>
+                <small class="text-body-secondary">
+                    calanol loguin.
+                </small>
+              </p>
+              <br>
+                <a href="login.html" type="button" class="btn btn-outline-primary">
+                    <i class="bi bi-person-fill-lock"></i> ログイン
+                </a>
+            `;
+        }
+        </script>
+        <script src="main.js"></script>      
+</body>
+</html>
